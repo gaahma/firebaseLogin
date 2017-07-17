@@ -70,6 +70,7 @@ function signOut(){
 		concertBuddy = null;
 		provider = null;
 		localStorage.clear();
+		sessionStorage.clear();
 	}).catch(function(error){
 		console.log(error.code);
 	});
