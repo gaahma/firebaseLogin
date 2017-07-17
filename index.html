@@ -69,6 +69,7 @@ function signOut(){
 	firebase.auth().signOut().then(function(){
 		console.log("signed out");
 		concertBuddy = null;
+		provider = null;
 	}).catch(function(error){
 		console.log(error.code);
 	});
