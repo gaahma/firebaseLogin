@@ -69,6 +69,7 @@ function signOut(){
 		console.log("signed out");
 		concertBuddy = null;
 		provider = null;
+		localStorage.clear();
 	}).catch(function(error){
 		console.log(error.code);
 	});
