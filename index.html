@@ -54,7 +54,6 @@ function makeUser(name, email, photo, id){
 		photo: photo,
 		id: id
 	}
-
 	return user;
 }
 
@@ -69,10 +68,10 @@ function getInfo(){
 function signOut(){
 	firebase.auth().signOut().then(function(){
 		console.log("signed out");
-		provider = user = email = photo = id  = undefined;
+		concertBuddy = null;
 	}).catch(function(error){
 		console.log(error.code);
-	})
+	});
 }
 
 
