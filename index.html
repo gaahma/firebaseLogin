@@ -68,7 +68,7 @@ function getInfo(){
 function signOut(){
 	firebase.auth().signOut().then(function(){
 		console.log("signed out");
-		provider = user = email = photo = id = name = undefined;
+		provider = user = email = photo = id = name = null;
 	}).catch(function(error){
 		console.log(error.code);
 	})
