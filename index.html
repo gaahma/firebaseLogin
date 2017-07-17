@@ -21,7 +21,7 @@
   firebase.initializeApp(config);
 
 var provider;
-var cbUser;
+var concertBuddy; 
 
 
 
@@ -47,17 +47,21 @@ function signIn(){
   // ...
   });
 }
+function makeUser(name, email, photo, id){
+	var user = {
+		name: name,
+		email: email,
+		photo: photo,
+		id: id
+	}
 
+	return user;
+}
 
 function getInfo(){
 	var user = firebase.auth().currentUser;
   if (user != null) {
-    cbUser.name = user.displayName;
-    cbUser.email = user.email;
-    cbUser.photo = user.photoURL;
-    cbUser.id = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                   // this value to authenticate with your backend server, if
-                   // you have one. Use User.getToken() instead.
+  	concertBuddy = makeUser(user.displayName, user.email, user.photoURL, user.uid);
   }
 
 }
