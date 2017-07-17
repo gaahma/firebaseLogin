@@ -21,11 +21,10 @@
   firebase.initializeApp(config);
 
 var provider;
-var user;
-var photo;
-var name;
-var email;
-var id;
+var cbUser;
+
+
+
 
 function signIn(){
   provider = new firebase.auth.FacebookAuthProvider();
@@ -52,13 +51,11 @@ function signIn(){
 
 function getInfo(){
 	var user = firebase.auth().currentUser;
-  var photoUrl, uid, emailVerified;
-
   if (user != null) {
-    name = user.displayName;
-    email = user.email;
-    photo = user.photoURL;
-    id = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+    cbUser.name = user.displayName;
+    cbUser.email = user.email;
+    cbUser.photo = user.photoURL;
+    cbUser.id = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                    // this value to authenticate with your backend server, if
                    // you have one. Use User.getToken() instead.
   }
@@ -68,7 +65,7 @@ function getInfo(){
 function signOut(){
 	firebase.auth().signOut().then(function(){
 		console.log("signed out");
-		provider = user = email = photo = id = name = void;
+		provider = user = email = photo = id  = undefined;
 	}).catch(function(error){
 		console.log(error.code);
 	})
